@@ -1,5 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+//plugins { - This block defines plugins that will be used for the project.
+//        alias(libs.plugins.android.application) apply false - This line does two things:
+//        alias: Creates an alias for a plugin defined elsewhere. Here, libs.plugins.android.application likely refers to a location where the actual plugin information (id and potentially version) is stored. This could be a variable defined in the same file or retrieved from a separate version catalog file.
+//    apply false: This tells Gradle to not apply the plugin to this specific build file (usually the top-level build.gradle).
+//            alias(libs.plugins.kotlin.android) apply false - This line follows the same pattern as the previous one, but for the Kotlin Android plugin.
+//            In simpler terms, this code defines aliases for the Android application and Kotlin Android plugins but tells Gradle not to activate them in this build file. This is typically used in a multi-project build scenario:
+//            The top-level build.gradle file defines these aliases but doesn't apply them (with apply false).
+//    Subproject build files (like app/build.gradle) then reference these aliases and apply the plugins (without apply false).
+
 plugins {
-alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
 }
