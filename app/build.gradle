@@ -1,3 +1,6 @@
+// This file uses the definitions in the libs.version.toml
+// plugins { - This block declares plugins to be used in the project.
+//alias(libs.plugins.android.application) and  alias(libs.plugins.kotlin.android) - These lines use the alias function to reference plugins defined elsewhere, likely in a variable named libs.plugins.android.application and libs.plugins.kotlin.android. These variables probably hold the actual plugin identifiers (like 'com.android.application' for the Android application plugin) and potentially their versions.
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,18 +8,28 @@ plugins {
 
 android {
     namespace 'com.example.myapplication'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.example.myapplication"
         minSdk 24
-        targetSdk 34
+        targetSdk 35
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+// buildTypes { - This block defines different build types for your project. These types typically correspond to different environments (e.g., debug and release).
+//
+//release { - This block defines settings specific to the "release" build type. This is likely the configuration used to generate the final app you publish to the Play Store.
+//minifyEnabled false - This line controls code shrinking/minification for the release build. By default, it's set to false. This means the code won't be shrunk, potentially resulting in a larger app size.
+//proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro' - This line specifies files containing rules for ProGuard (or R8 in newer Gradle versions). ProGuard is a tool used to obfuscate (rename) and optimize code, potentially reducing app size.
+//getDefaultProguardFile('proguard-android-optimize.txt'): This tells Gradle to include the default ProGuard configuration file provided by the Android Gradle Plugin. It contains basic rules for optimizing and shrinking code.
+//'proguard-rules.pro': This points to a custom ProGuard rules file (proguard-rules.pro) located in your project. You can add specific rules here to control what ProGuard does, such as preventing obfuscation of certain classes or methods.
+// In summary:
+//This code disables code shrinking by default for the release build.
+//It provides options for defining custom rules for ProGuard/R8 optimization if needed.
+//You can typically enable minifyEnabled and add your own ProGuard rules to further optimize the app size while preserving functionality. However, this requires careful configuration to avoid breaking your app.
     buildTypes {
         release {
             minifyEnabled false
@@ -33,13 +46,93 @@ android {
 }
 
 dependencies {
-
+    //This line of code is part of a Gradle build script, specifically used in Android app development. It's a dependency declaration that tells the Gradle build system to include the Android Jetpack Core KTX library in your project.
+    // This line of code is commonly found in Gradle build scripts for Android projects. It defines a variable named coreKtx and assigns it the value "1.15.0". This variable is likely used to specify the version of the Android Jetpack Core KTX library.
+    //
+    //What is the Android Jetpack Core KTX library?
+    //
+    //The Android Jetpack Core KTX library provides extensions to the Android framework APIs, making them easier to use with Kotlin. It offers concise and idiomatic ways to work with common Android APIs, reducing boilerplate code and improving code readability.
+    //
+    //Why is it used?
+    //
+    //Simplified API usage: Core KTX provides extension functions that make common Android APIs more Kotlin-friendly.
+    //Reduced boilerplate code: By using concise syntax, you can write less code to achieve the same functionality.
+    //Improved code readability: The more concise syntax and Kotlin-idiomatic approach make your code easier to understand and maintain.
     implementation libs.androidx.core.ktx
+    // This line of code, typically found in a Gradle build script for Android projects, declares a dependency on the Android Support Library's AppCompat library.
     implementation libs.androidx.appcompat
+    // This line of code is commonly found in Gradle build scripts for Android projects. It declares a dependency on the Material Components library, which provides a set of UI components implementing Google's Material Design guidelines.
     implementation libs.material
+    // This line of code is a dependency declaration in a Gradle build script for an Android project. It specifies that the androidx.activity library should be included in the project.
+    //
+    //What is the androidx.activity library?
+    //
+    //The androidx.activity library provides a consistent way to manage Activity lifecycles and other related features across different Android versions. It offers several key features:
+    //Activity Lifecycle Management: Provides a consistent API for managing Activity lifecycles, such as onCreate(), onStart(), onResume(), onPause(), onStop(), and onDestroy().
+    //Fragment API: Offers a more robust and flexible Fragment API, especially for scenarios involving multiple back stacks and dynamic fragment transactions.
+    //Saved State: Helps you save and restore Activity and Fragment state across configuration changes, such as device rotation or screen size changes.
+    //ViewModel: Provides a way to share data between different Activities and Fragments, making it easier to manage UI state and handle configuration changes.
+    //Why is it used?
+    //Consistency: Ensures consistent behavior across different Android versions.
+    //Flexibility: Provides a more flexible and powerful Fragment API.
+    //State Preservation: Helps preserve UI state during configuration changes.
+    //Data Sharing: Facilitates data sharing between Activities and Fragments.
     implementation libs.androidx.activity
+    // This line of code is a dependency declaration in a Gradle build script for an Android project. It specifies that the androidx.constraintlayout library should be included in the project.
+    //
+    //What is the androidx.constraintlayout library?
+    //
+    //The androidx.constraintlayout library provides a flexible and powerful layout system for creating complex and adaptive UI layouts in Android apps. It uses a visual layout editor and a declarative syntax to define layout constraints between UI elements.
+    //
+    //Key features of the ConstraintLayout library:
+    //
+    //Flexible Layout System: Allows you to create complex layouts with a visual editor or code.
+    //Responsive Layouts: Enables you to create layouts that adapt to different screen sizes and orientations.
+    //Performance Optimization: Provides efficient layout rendering, especially for complex layouts.
+    //Constraint Chains: Allows you to create chains of views with specific alignment and spacing.
+    //Barriers: Provides a way to group views and create barriers to align other views.
+    //Guidelines: Allows you to create guidelines to align and position views.
+    //Why is it used?
+    //
+    //Simplified Layout Creation: Makes it easier to create complex layouts without nested layouts.
+    //Responsive Design: Ensures your app looks good on different screen sizes and orientations.
+    //Performance Optimization: Improves app performance by reducing layout inflation time.
     implementation libs.androidx.constraintlayout
     testImplementation libs.junit
+    // This line of code is a dependency declaration in a Gradle build script for an Android project. It specifies that the androidx.test.ext:junit library should be included in the project's Android test implementation configuration.
+    //
+    //What is the androidx.test.ext:junit library?
+    //
+    //The AndroidX Test JUnit library provides a JUnit runner and rules for writing Android instrumentation tests. It allows you to write tests that run on an Android device or emulator and interact with the app's UI and components.
+    //
+    //Key features of the AndroidX Test JUnit library:
+    //
+    //JUnit Runner: Provides a JUnit runner that allows you to write tests using the familiar JUnit framework.
+    //Test Rules: Offers various test rules to set up and tear down test environments, such as AndroidJUnitRunner, ActivityTestRule, and FragmentScenario.
+    //Test Orchestrator: Enables parallel execution of tests for faster testing.
+    //Why is it used?
+    //
+    //Familiar Testing Framework: Allows you to use the familiar JUnit testing framework to write Android tests.
+    //Device and Emulator Testing: Provides a way to test your app on real devices or emulators.
+    //UI Testing: Enables you to write UI tests that interact with your app's UI components.
+    //Parallel Test Execution: Speeds up the testing process by running tests in parallel.
     androidTestImplementation libs.androidx.junit
+    // This line of code is a dependency declaration in a Gradle build script for an Android project. It specifies that the androidx.test.espresso:espresso-core library should be included in the project's Android test implementation configuration.
+    //
+    //What is the androidx.test.espresso:espresso-core library?
+    //
+    //The Espresso Core library is a part of the Android Testing Support Library. It provides a framework for writing concise and reliable Android UI tests. It offers a set of APIs to interact with UI components and make assertions about their state.
+    //
+    //Key features of Espresso Core:
+    //
+    //View Interaction: Allows you to interact with UI elements, such as clicking buttons, entering text, and selecting items from lists.
+    //View Assertion: Enables you to verify the state of UI elements, such as checking text content, visibility, and enabled state.
+    //Custom Matchers: Provides the ability to create custom matchers for more complex UI element matching.
+    //Idling Resources: Helps you handle asynchronous operations and ensure that tests wait for UI elements to be idle before proceeding.
+    //Why is it used?
+    //
+    //Reliable UI Tests: Provides a robust framework for writing reliable and maintainable UI tests.
+    //Simplified Test Writing: Simplifies the process of writing UI tests by providing a concise and intuitive API.
+    //Asynchronous Operation Handling: Helps you handle asynchronous operations, such as network requests and database queries, in UI tests.
     androidTestImplementation libs.androidx.espresso.core
 }
