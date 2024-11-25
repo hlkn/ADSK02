@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
                 binding.textView.text = "Olive Branch"
             }
             else {
-                binding.imageView.setImageResource(R.drawable.medium_olive_oil)
-                binding.textView.text = "medium olive oil"
+                binding.imageView.setImageResource(R.drawable.olive_branch_vector)
+                binding.textView.text = "olive branch vector"
             }
         }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
