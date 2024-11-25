@@ -43,6 +43,9 @@ android {
     kotlinOptions {
         jvmTarget = '11'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -98,6 +101,8 @@ dependencies {
     //Responsive Design: Ensures your app looks good on different screen sizes and orientations.
     //Performance Optimization: Improves app performance by reducing layout inflation time.
     implementation libs.androidx.constraintlayout
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
     testImplementation libs.junit
     // This line of code is a dependency declaration in a Gradle build script for an Android project. It specifies that the androidx.test.ext:junit library should be included in the project's Android test implementation configuration.
     //
