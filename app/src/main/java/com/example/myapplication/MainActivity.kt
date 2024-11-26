@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import coil.load
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,12 +26,12 @@ class MainActivity : AppCompatActivity() {
         binding.imageSwitch.setOnCheckedChangeListener { _, isChecked ->
             //binding.imageView.visibility = if (isChecked) View.VISIBLE else View.GONE
             if (isChecked) {
-                binding.imageView.setImageResource(R.drawable.olive_branch)
-                binding.textView.text = "Olive Branch"
+                binding.imageView.load("https://bitly.com/android_dev_image1")
+                binding.textView.text = "https://bitly.com/android_dev_image1"
             }
             else {
-                binding.imageView.setImageResource(R.drawable.olive_branch_vector)
-                binding.textView.text = "olive branch vector"
+                binding.imageView.load("https://bitly.com/android_dev_image2")
+                binding.textView.text = "https://bitly.com/android_dev_image2"
             }
         }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
