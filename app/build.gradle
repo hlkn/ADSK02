@@ -138,4 +138,6 @@ dependencies {
     //Simplified Test Writing: Simplifies the process of writing UI tests by providing a concise and intuitive API.
     //Asynchronous Operation Handling: Helps you handle asynchronous operations, such as network requests and database queries, in UI tests.
     androidTestImplementation libs.androidx.espresso.core
+
+    implementation libs.coilkt
 }
