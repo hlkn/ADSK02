@@ -15,6 +15,13 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getSupportActionBar()?.setTitle("Olive Branch")
+        getSupportActionBar()?.show()
+        supportActionBar?.let {
+            it.setDisplayShowHomeEnabled(true)
+            it.setDisplayUseLogoEnabled(true)
+            it.setLogo(R.drawable.ic_action_name)
+        }
         binding.imageSwitch.setOnCheckedChangeListener { _, isChecked ->
             //binding.imageView.visibility = if (isChecked) View.VISIBLE else View.GONE
             if (isChecked) {
